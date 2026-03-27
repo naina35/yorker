@@ -1,0 +1,19 @@
+# Web framework
+fastapi==0.111.0        # latest stable, works with Python 3.11
+uvicorn[standard]==0.30.0
+
+# Database
+psycopg2-binary==2.9.9  # compatible with 3.11, no Rust needed
+
+# Auth
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Environment variables
+python-dotenv==1.0.1
+
+# Redis (leaderboard + caching)
+redis==5.0.4
+
+# Validation
+pydantic==2.7.1          # works with Python 3.11, prebuilt wheel exists
