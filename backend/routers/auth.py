@@ -1,12 +1,3 @@
-"""
-routers/auth.py
----------------
-Endpoints:
-  POST /auth/register   — create a new user account
-  POST /auth/login      — returns a JWT token
-  GET  /auth/me         — returns the logged-in user's profile (requires token)
-"""
-
 from fastapi import APIRouter, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from pydantic import BaseModel, EmailStr
@@ -32,8 +23,6 @@ def verify_password(plain: str, hashed: str) -> bool:
 
 
 
-# JWT helpers
-
 JWT_SECRET       = os.getenv("JWT_SECRET")
 JWT_ALGORITHM    = os.getenv("JWT_ALGORITHM", "HS256")
 JWT_EXPIRE_MINUTES = int(os.getenv("JWT_EXPIRE_MINUTES", 10080))  # 7 days
@@ -57,14 +46,7 @@ def decode_token(token: str) -> int:
         raise HTTPException(status_code=401, detail="Invalid or expired token")
 
 
-# -------------------------------------------------------
-# Dependency — use this in any route that needs auth
-#
-# Example:
-#   @router.get("/protected")
-#   def protected(current_user = Depends(get_current_user)):
-#       return current_user
-# -------------------------------------------------------
+
 def get_current_user(token: str = Depends(oauth2_scheme)):
     user_id = decode_token(token)
     user = fetch_one(
@@ -76,7 +58,6 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
     return user
 
 
-# Pydantic schemas — request/response shapes
 
 class RegisterRequest(BaseModel):
     name: str
@@ -130,8 +111,8 @@ def register(body: RegisterRequest):
 
 @router.post("/login", response_model=LoginResponse)
 def login(form: OAuth2PasswordRequestForm = Depends()):
-    # OAuth2PasswordRequestForm gives us form.username and form.password
-    # We use email as the username field
+    # OAuth2PasswordRequestForm gives me form.username and form.password
+    # I use email as the username field
     user = fetch_one("SELECT * FROM users WHERE email = %s", (form.username,))
 
     if not user or not verify_password(form.password, user["password"]):

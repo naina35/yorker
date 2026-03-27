@@ -249,6 +249,7 @@ def get_join_requests(team_id: int, current_user = Depends(get_current_user)):
 # -------------------------------------------------------
 # PATCH /{team_id}/join-requests/{request_id} — Accept or deny
 # -------------------------------------------------------
+
 @router.patch("/{team_id}/join-requests/{request_id}")
 def handle_join_request(
     team_id: int,

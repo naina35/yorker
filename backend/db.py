@@ -1,16 +1,6 @@
-"""
-Using in other files:
-
-    from db import get_db
-
-    with get_db() as cursor:
-        cursor.execute("SELECT * FROM users WHERE id = %s", (user_id,))
-        user = cursor.fetchone()
-"""
-
 import os
 import psycopg2
-import psycopg2.extras  # gives us dict-style rows instead of plain tuples
+import psycopg2.extras 
 from contextlib import contextmanager
 from dotenv import load_dotenv
 
@@ -52,9 +42,6 @@ def get_db():
         conn.close()
 
 
-# -------------------------------------------------------
-# Convenience helpers — avoids repeating boilerplate
-# -------------------------------------------------------
 
 def fetch_one(query: str, params: tuple = ()):
     """Run a SELECT and return a single row as a dict, or None."""
