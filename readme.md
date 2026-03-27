@@ -15,9 +15,8 @@ Cache:        Redis (Upstash )
 Realtime:     WebSockets (FastAPI native)
 Frontend:     React + TypeScript
 Styling:      Tailwind CSS
-Hosting:      Render (backend) + Vercel (frontend)
 Auth:         JWT (python-jose)
-Geolocation:  PostGIS (already on Supabase)
+Geolocation:  PostGIS (Supabase)
 ```
 
 ## API Endpoints
@@ -122,46 +121,6 @@ Live match score:
   Type: Hash
   Fields: team_a_runs, team_a_wickets, team_b_runs, team_b_wickets
   TTL: 24hrs after match ends
-```
-
----
-
-## Folder Structure
-
-```
-cricket-leagues/
-├── backend/
-│   ├── main.py
-│   ├── db.py                  ← psycopg2 connection helper
-│   ├── auth.py                ← JWT logic
-│   ├── redis_client.py
-│   ├── routers/
-│   │   ├── auth.py
-│   │   ├── teams.py
-│   │   ├── leagues.py
-│   │   ├── matches.py
-│   │   ├── innings.py
-│   │   └── stats.py
-│   ├── services/
-│   │   ├── leaderboard.py     ← Redis sorted set logic
-│   │   ├── nrr.py             ← Net Run Rate calculation
-│   │   └── websocket.py       ← live score broadcasting
-│   └── sql/
-│       └── schema.sql         ← all CREATE TABLE statements
-├── frontend/
-│   ├── src/
-│   │   ├── pages/
-│   │   │   ├── Home.tsx
-│   │   │   ├── League.tsx
-│   │   │   ├── Match.tsx      ← live scorecard
-│   │   │   └── Player.tsx
-│   │   ├── components/
-│   │   │   ├── Scorecard.tsx
-│   │   │   ├── Leaderboard.tsx
-│   │   │   └── JoinRequests.tsx
-│   │   └── hooks/
-│   │       └── useWebSocket.ts
-└── docker-compose.yml         ← local Postgres + Redis for dev
 ```
 
 ---
