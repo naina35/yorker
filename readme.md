@@ -1,3 +1,10 @@
+Take your cricket team to new heights using Yorker.   
+Join a local team or make your own.
+Join a league or make your own.
+Player stats and match records
+team stats
+follow leagues or matches near u
+
 ## Tech Stack
 
 ```
@@ -159,7 +166,7 @@ cricket-leagues/
 
 ---
 
-## Stretch Features (Post V1)
+## FUTURE:
 
 - Push notifications when join request is accepted
 - Match commentary (ball by ball text log)
