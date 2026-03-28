@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:wght@600&display=swap');
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --blue-50: #E6F1FB;
+  --blue-100: #B5D4F4;
+  --blue-400: #378ADD;
+  --blue-600: #185FA5;
+  --blue-800: #0C447C;
+  --blue-900: #042C53;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #f8faff;
+  color: #1a1a2e;
+}
+
+h1, h2, h3, .font-display {
+  font-family: 'Fraunces', serif;
+}
