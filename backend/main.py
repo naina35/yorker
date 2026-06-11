@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-# router importsS
+# router imports
 from routers import auth,teams,leagues,matches,innings,stats
 
 

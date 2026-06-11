@@ -42,7 +42,6 @@ def get_db():
         conn.close()
 
 
-
 def fetch_one(query: str, params: tuple = ()):
     """Run a SELECT and return a single row as a dict, or None."""
     with get_db() as cursor:
